@@ -1,6 +1,26 @@
 import React, { Component } from "react";
 
 export default class Form extends Component {
+  constructor() {
+    super();
+    this.state = {
+      height: 0,
+      weight: 0
+    };
+  }
+
+  handleHeight = e => {
+    this.setState({
+      height: e.target.value
+    });
+  };
+
+  handleWeight = e => {
+    this.setState({
+      weight: e.target.value
+    });
+  };
+
   render() {
     return (
       <div>
@@ -21,6 +41,7 @@ export default class Form extends Component {
               type="number"
               placeholder="Enter your height(in cm)..."
               id="height"
+              onChange={this.handleHeight}
             />
           </div>
           <div className="weight">
@@ -29,6 +50,7 @@ export default class Form extends Component {
               type="number"
               placeholder="Enter your weight(in kg)..."
               id="weight"
+              onChange={this.handleWeight}
             />
           </div>
           <input type="submit" value="Calculate" id="submit-button" />

@@ -5,7 +5,7 @@ export default class Score extends Component {
     return (
       <div>
         <h3>
-          <b>Your Score Is: </b>
+          <b>Your Score Is: {this.props.score}</b>
         </h3>
         <p>You need to do more ...</p>
       </div>

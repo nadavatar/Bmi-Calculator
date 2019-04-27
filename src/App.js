@@ -1,15 +1,21 @@
-import React from "react";
+import React, { Component } from "react";
 import Header from "./Components/Header";
 import Form from "./Components/Form";
 import Score from "./Components/Score";
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Form />
-    </div>
-  );
-}
+export default class App extends Component {
+  constructor() {
+    super();
+    this.state = 0;
+  }
 
-export default App;
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Form />
+        {/* <Score score={this.state} /> */}
+      </div>
+    );
+  }
+}
