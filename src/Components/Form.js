@@ -21,6 +21,16 @@ export default class Form extends Component {
     });
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    const height = this.state.height / 100;
+    const weight = this.state.weight;
+
+    if (weight > 0 && height > 0) {
+      this.props.handleFormSubmit(height, weight);
+    }
+  };
+
   render() {
     return (
       <div>
@@ -53,7 +63,12 @@ export default class Form extends Component {
               onChange={this.handleWeight}
             />
           </div>
-          <input type="submit" value="Calculate" id="submit-button" />
+          <input
+            type="submit"
+            value="Calculate"
+            id="submit-button"
+            onClick={this.handleSubmit}
+          />
         </form>
       </div>
     );

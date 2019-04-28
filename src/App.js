@@ -6,14 +6,26 @@ import Score from "./Components/Score";
 export default class App extends Component {
   constructor() {
     super();
-    this.state = 0;
+    this.state = {
+      bmi: 0,
+      showScore: false
+    };
   }
+
+  handleFormSubmit = (height, weight) => {
+    const bmi = weight / (height * height);
+    this.setState({
+      bmi: bmi,
+      showScore: true
+    });
+    console.log(bmi);
+  };
 
   render() {
     return (
       <div className="App">
         <Header />
-        <Form />
+        <Form handleFormSubmit={this.handleFormSubmit} />
         {/* <Score score={this.state} /> */}
       </div>
     );
