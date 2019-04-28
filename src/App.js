@@ -26,7 +26,7 @@ export default class App extends Component {
       <div className="App">
         <Header />
         <Form handleFormSubmit={this.handleFormSubmit} />
-        {/* <Score score={this.state} /> */}
+        {this.state.showScore && <Score score={this.state.bmi} />}
       </div>
     );
   }
