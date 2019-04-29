@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./Components/Header";
 import Form from "./Components/Form";
 import Score from "./Components/Score";
+import axios from "axios";
 
 export default class App extends Component {
   constructor() {
@@ -12,13 +13,26 @@ export default class App extends Component {
     };
   }
 
-  handleFormSubmit = (height, weight) => {
-    const bmi = weight / (height * height);
-    this.setState({
-      bmi: bmi,
-      showScore: true
+  handleFormSubmit = async (height, weight) => {
+    // const bmi = weight / (height * height);
+    const request = await axios({
+      method: "get",
+      url: "http://localhost:4001/bmi",
+      headers: {
+        height: height,
+        weight: weight
+      }
     });
-    console.log(bmi);
+    try {
+      let bmi = request.data.bmi;
+      bmi = Math.round(bmi * 100) / 100;
+      this.setState({
+        bmi: bmi,
+        showScore: true
+      });
+    } catch (error) {
+      throw error;
+    }
   };
 
   render() {
